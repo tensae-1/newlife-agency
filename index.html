@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Content Security Policy (single, valid) -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self';
+             connect-src 'self';
+             script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net;
+             style-src  'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+             font-src   'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+             img-src    'self' data:;
+             base-uri 'self';
+             form-action 'self';">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PZSGHSKQKZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PZSGHSKQKZ');
+  </script>
+
+  <title>NewLife Agency | Academy-to-Academy Showcase Operator</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root{
+      --bg: #0b1220;
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.12);
+      --text: rgba(255,255,255,0.88);
+      --muted: rgba(255,255,255,0.65);
+      --primary: #5aa7ff;
+      --accent: #ff4d5a;
+      --glow: 0 18px 80px rgba(90,167,255,0.22);
+      --radius: 18px;
+    }
+
+    html, body { height: 100%; }
+    body{
+      font-family: 'Open Sans', sans-serif;
+      background: radial-gradient(1200px 800px at 10% 10%, rgba(90,167,255,0.14), transparent 55%),
+                  radial-gradient(1200px 800px at 90% 30%, rgba(255,77,90,0.10), transparent 60%),
+                  linear-gradient(180deg, #070b12, #0b1220 45%, #070b12);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    h1,h2,h3,h4,h5{
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* Navbar */
+    .navbar{
+      backdrop-filter: blur(12px);
+      background: rgba(11,18,32,0.65) !important;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .navbar-brand { font-weight: 700; letter-spacing: -0.02em; }
+    .nav-link{ color: rgba(255,255,255,0.80) !important; }
+    .nav-link:hover{ color: #fff !important; }
+
+    /* Hero */
+    .hero{
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 88px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(7,11,18,0.35), rgba(7,11,18,0.92)),
+        url('hero-bg.jpg') center/cover no-repeat;
+      filter: saturate(1.1);
+      transform: scale(1.03);
+      z-index:-2;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:-200px;
+      background: radial-gradient(circle at 30% 20%, rgba(90,167,255,0.25), transparent 40%),
+                  radial-gradient(circle at 70% 40%, rgba(255,77,90,0.18), transparent 45%);
+      z-index:-1;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .hero h1{
+      font-size: clamp(2.2rem, 3.6vw, 3.6rem);
+      line-height: 1.05;
+      text-shadow: 0 10px 55px rgba(0,0,0,0.45);
+    }
+
+    .hero p{
+      color: rgba(255,255,255,0.80);
+      font-size: 1.1rem;
+      max-width: 58ch;
+    }
+
+    .btn-primary{
+      background: linear-gradient(90deg, var(--primary), #7cc2ff);
+      border: none;
+      box-shadow: var(--glow);
+    }
+    .btn-outline-light{
+      border-color: rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.92);
+    }
+    .btn-outline-light:hover{
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.32);
+      color: #fff;
+    }
+
+    /* Sections */
+    section{ padding: 80px 0; }
+    .section-title{
+      margin-bottom: 22px;
+    }
+    .section-sub{
+      color: var(--muted);
+      max-width: 76ch;
+    }
+
+    /* Cards */
+    .glass{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 60px rgba(0,0,0,0.25);
+    }
+    .feature{
+      padding: 22px;
+      height: 100%;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+    .feature:hover{
+      transform: translateY(-6px);
+      border-color: rgba(90,167,255,0.32);
+    }
+    .icon-badge{
+      width: 44px; height: 44px;
+      display:flex; align-items:center; justify-content:center;
+      border-radius: 14px;
+      background: rgba(90,167,255,0.16);
+      border: 1px solid rgba(90,167,255,0.25);
+      color: #cfe6ff;
+      margin-bottom: 14px;
+    }
+    .muted{ color: var(--muted); }
+
+    /* Stats */
+    .stat{
+      padding: 22px;
+      text-align: center;
+    }
+    .stat .num{
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* Image tiles */
+    .img-tile{
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+    }
+    .img-tile img{
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform .35s ease;
+      display:block;
+    }
+    .img-tile:hover img{ transform: scale(1.05); }
+    .img-caption{
+      padding: 14px 14px 16px;
+      color: rgba(255,255,255,0.88);
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.02rem;
+    }
+
+    /* Timeline */
+    .timeline{
+      position: relative;
+      padding-left: 18px;
+    }
+    .timeline:before{
+      content:"";
+      position:absolute;
+      left: 7px; top: 8px; bottom: 8px;
+      width: 2px;
+      background: rgba(255,255,255,0.12);
+    }
+    .t-item{
+      position: relative;
+      padding: 14px 18px 14px 26px;
+      margin-bottom: 10px;
+    }
+    .t-item:before{
+      content:"";
+      position:absolute;
+      left: 0;
+      top: 22px;
+      width: 14px; height: 14px;
+      border-radius: 99px;
+      background: rgba(90,167,255,0.35);
+      border: 1px solid rgba(90,167,255,0.55);
+      box-shadow: 0 0 0 6px rgba(90,167,255,0.10);
+    }
+
+    /* Forms (no forms for telegram contact) */
+    .form-control, .form-select{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.90);
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+    .form-control::placeholder{ color: rgba(255,255,255,0.45); }
+    .form-control:focus, .form-select:focus{
+      border-color: rgba(90,167,255,0.45);
+      box-shadow: 0 0 0 0.2rem rgba(90,167,255,0.15);
+      background: rgba(255,255,255,0.07);
+      color: #fff;
+    }
+
+    /* Footer */
+    footer{
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.30);
+      color: rgba(255,255,255,0.75);
+      padding: 28px 0;
+    }
+
+    /* Scroll animation */
+    .fade-in{
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.show{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Small screens */
+    @media (max-width: 576px){
+      section{ padding: 64px 0; }
+      .img-tile img{ height: 190px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#top">NewLife Agency</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#what">What We Do</a></li>
+          <li class="nav-item"><a class="nav-link" href="#model">Model</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proof">Proof</a></li>
+          <li class="nav-item"><a class="nav-link" href="#journey">Founder Journey</a></li>
+          <li class="nav-item"><a class="nav-link" href="#showcase">Showcases</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-primary btn-sm px-3" href="#contact">Partner With Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="hero fade-in">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <span class="pill mb-3">
+            <i class="fa-solid fa-shield-halved"></i>
+            East Africa • UK • Europe • USA • Verified Partners
+          </span>
+
+          <h1 class="mb-3">We create structured scouting access between African academies and international clubs.</h1>
+
+          <p class="mb-4">
+            NewLife Agency operates as an academy-to-academy bridge, organizing controlled showcase environments that make East African talent accessible, credible, and easier for international partners to evaluate on the ground.
+          </p>
+
+          <div class="d-flex flex-wrap gap-2">
+            <a href="#contact" class="btn btn-primary btn-lg px-4">
+              <i class="fa-solid fa-handshake me-2"></i> Partner With Us
+            </a>
+            <a href="#showcase" class="btn btn-outline-light btn-lg px-4">
+              <i class="fa-solid fa-futbol me-2"></i> Explore Showcase Model
+            </a>
+          </div>
+
+          <div class="mt-4 muted">
+            <i class="fa-solid fa-circle-info me-2"></i>
+            We do not represent individual players. We work with academies and verified partners to make structured showcase opportunities viable.
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="fade-in">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <div class="glass p-3">
+            <img loading="lazy" src="profile.jpg" alt="Founder" class="img-fluid rounded-4" />
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h2 class="section-title">About NewLife Agency</h2>
+          <p class="section-sub">
+            NewLife Agency is built around one clear mission: create a reliable bridge between African academies with talent and international partners seeking structured access. We reduce noise, improve trust, and make showcases more professional from the first conversation to the final event day.
+          </p>
+
+          <div class="row g-3 mt-3">
+            <div class="col-md-6">
+              <div class="glass feature">
+                <div class="icon-badge"><i class="fa-solid fa-building"></i></div>
+                <h5 class="mb-1">Academy-First Model</h5>
+                <p class="muted mb-0">We work through academies, not individual player representation.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="glass feature">
+                <div class="icon-badge"><i class="fa-solid fa-user-check"></i></div>
+                <h5 class="mb-1">Verified Pathways</h5>
+                <p class="muted mb-0">We focus on credible partners, organized evaluation, and serious opportunities.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section id="what" class="fade-in">
+    <div class="container">
+      <div class="d-flex flex-column align-items-center text-center mb-4">
+        <h2 class="section-title">What We Do</h2>
+        <p class="section-sub">A structured operator model: we connect partner academies, organize evaluation environments, and make international scouting more efficient.</p>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="glass feature">
+            <div class="icon-badge"><i class="fa-solid fa-link"></i></div>
+            <h5>Academy-to-Academy Access</h5>
+            <p class="muted mb-0">We connect East African academies with verified international clubs, academies, and decision-makers.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="glass feature">
+            <div class="icon-badge"><i class="fa-solid fa-clipboard-check"></i></div>
+            <h5>Showcase Structuring</h5>
+            <p class="muted mb-0">We help make showcases viable by coordinating format, communication, partner alignment, and on-ground execution.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="glass feature">
+            <div class="icon-badge"><i class="fa-solid fa-video"></i></div>
+            <h5>Scouting Efficiency</h5>
+            <p class="muted mb-0">We create cleaner evaluation environments so international partners can assess talent faster and with more confidence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY THIS MODEL WORKS -->
+  <section id="model" class="fade-in">
+    <div class="container">
+      <h2 class="section-title">Why This Model Works</h2>
+      <p class="section-sub">
+        International partners do not lack interest in African talent — they lack structured access. Local academies do not lack players — they lack credible, organized exposure. NewLife Agency exists to close that gap by building showcase environments that are efficient, serious, and easier to trust.
+      </p>
+      <div class="row g-3 mt-4">
+        <div class="col-md-4">
+          <div class="glass feature">
+            <div class="icon-badge"><i class="fa-solid fa-filter"></i></div>
+            <h5>Filtered Access</h5>
+            <p class="muted mb-0">We reduce noise by working through real academies and defined event structures.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="glass feature">
+            <div class="icon-badge"><i class="fa-solid fa-shield"></i></div>
+            <h5>Lower Risk</h5>
+            <p class="muted mb-0">Professional presentation and partner coordination make evaluation more credible for visiting clubs.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="glass feature">
+            <div class="icon-badge"><i class="fa-solid fa-gears"></i></div>
+            <h5>Repeatable System</h5>
+            <p class="muted mb-0">The goal is not one event. The goal is a repeatable academy-to-academy showcase system.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF / STATS -->
+  <section id="proof" class="fade-in">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-lg-5">
+          <h2 class="section-title">Proof matters.</h2>
+          <p class="section-sub">
+            Our positioning is grounded in lived pathway experience, academy relationships, and direct knowledge of how real evaluation environments work. The goal is simple: make every partner conversation feel credible before the showcase even starts.
+          </p>
+        </div>
+        <div class="col-lg-7">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <div class="glass stat">
+                <div class="num">3+</div>
+                <div class="muted">Pathway Regions</div>
+                <div class="muted">East Africa • UK • USA</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="glass stat">
+                <div class="num">Verified</div>
+                <div class="muted">Structured Access</div>
+                <div class="muted">Credibility first</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="glass stat">
+                <div class="num">Network</div>
+                <div class="muted">Partner Network</div>
+                <div class="muted">UK • Europe • USA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ethiopia Journey Gallery (reuse your images) -->
+      <div class="mt-5">
+        <h3 class="mb-3">Journey in Ethiopia</h3>
+        <p class="muted mb-4">Early development and proof of the foundation.</p>
+
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="img-tile">
+              <img loading="lazy" src="nefas-silk-sefer.jpg" alt="Nefas Silk Sefer Project" />
+              <div class="img-caption">Nefas Silk Sefer Project</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="img-tile">
+              <img loading="lazy" src="sewnet-bishaw.jpg" alt="Sewnet Bishaw Academy" />
+              <div class="img-caption">Sewnet Bishaw Academy</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="img-tile">
+              <img loading="lazy" src="andre-football.jpg" alt="Andre Football Academy" />
+              <div class="img-caption">Andre Football Academy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trials in Europe Gallery (reuse your images) -->
+      <div class="mt-5">
+        <h3 class="mb-3">Trials in Europe</h3>
+        <p class="muted mb-4">Visual proof from trial environments.</p>
+
+        <div class="row g-3">
+          <div class="col-md-3 col-6">
+            <div class="img-tile">
+              <img loading="lazy" src="trial-europe1.jpg" alt="Trial Europe 1" />
+              <div class="img-caption">Trial Moment</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="img-tile">
+              <img loading="lazy" src="trial-europe2.jpg" alt="Trial Europe 2" />
+              <div class="img-caption">Training Session</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="img-tile">
+              <img loading="lazy" src="trial-europe3.jpg" alt="Trial Europe 3" />
+              <div class="img-caption">Evaluation Day</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="img-tile">
+              <img loading="lazy" src="trial-europe4.jpg" alt="Trial Europe 4" />
+              <div class="img-caption">Match Environment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOUNDER JOURNEY -->
+  <section id="journey" class="fade-in">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <h2 class="section-title">Founder Journey</h2>
+          <p class="section-sub">
+            This model is backed by lived pathway experience — understanding how talent is identified, how academy environments operate, and what serious evaluators actually look for.
+          </p>
+
+          <div class="glass p-3 mt-3">
+            <div class="timeline">
+              <div class="t-item">
+                <h5 class="mb-1"><i class="fa-solid fa-location-dot me-2 text-info"></i> Ethiopian Discovery</h5>
+                <p class="muted mb-0">Scouted at 16 while playing men’s football in Ethiopia’s third division.</p>
+              </div>
+              <div class="t-item">
+                <h5 class="mb-1"><i class="fa-solid fa-futbol me-2 text-info"></i> Just Football Academy</h5>
+                <p class="muted mb-0">1 year training under professional coaching in England.</p>
+              </div>
+              <div class="t-item">
+                <h5 class="mb-1"><i class="fa-solid fa-shirt me-2 text-info"></i> Harrogate Town U19</h5>
+                <p class="muted mb-0">Full season inside the English youth system.</p>
+              </div>
+              <div class="t-item">
+                <h5 class="mb-1"><i class="fa-solid fa-graduation-cap me-2 text-info"></i> US College Soccer</h5>
+                <p class="muted mb-0">Competing in the US collegiate pathway at Montgomery County CC.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <h4 class="mb-3">Professionals & Mentors</h4>
+            <div class="d-flex gap-3 align-items-start">
+              <div style="width: 110px; flex: 0 0 auto;">
+                <img loading="lazy" src="manager1.jpg" alt="Manager" class="img-fluid rounded-4" />
+              </div>
+              <div>
+                <h5 class="mb-1">John McDermott</h5>
+                <p class="muted mb-2">
+                  Experienced English football professional with a long career at Grimsby Town and a recognized leader in the game.
+                </p>
+                <p class="mb-0">
+                  For clips on how top academies evaluate players:
+                  <a class="link-light" href="https://youtu.be/g1kmcpENwW8?feature=shared" target="_blank" rel="noopener">watch here</a>.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-4 muted">
+              <i class="fa-solid fa-check me-2"></i>
+              We focus on credibility and connections — not fake promises.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASES -->
+  <section id="showcase" class="fade-in">
+    <div class="container">
+      <div class="glass p-4 p-md-5">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-7">
+            <h2 class="section-title mb-2">Showcase Model</h2>
+            <p class="section-sub mb-3">
+              We help make showcases viable by aligning local academies, international partners, communication, timing, and event structure. Our role is to build a controlled evaluation environment that is serious enough for partners and valuable enough for local academies.
+            </p>
+
+            <div class="row g-3 mt-3">
+              <div class="col-md-6">
+                <div class="glass feature">
+                  <div class="icon-badge"><i class="fa-solid fa-people-group"></i></div>
+                  <h5>For Local Academies</h5>
+                  <p class="muted mb-0">Partner with us to place your players inside a more organized and internationally credible scouting environment.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="glass feature">
+                  <div class="icon-badge"><i class="fa-solid fa-binoculars"></i></div>
+                  <h5>For International Partners</h5>
+                  <p class="muted mb-0">Access East African talent through cleaner event structure, clearer communication, and better on-ground coordination.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-lg-5">
+            <div class="glass p-4">
+              <h5 class="mb-2">What partners can expect</h5>
+              <ul class="muted mb-0">
+                <li>Structured academy communication</li>
+                <li>Defined showcase format and scheduling</li>
+                <li>Clearer partner coordination before event day</li>
+                <li>Professional positioning around credibility and access</li>
+              </ul>
+              <div class="mt-3 muted">
+                <i class="fa-solid fa-circle-info me-2"></i>
+                NewLife Agency facilitates access and event coordination. Final player decisions, selections, and outcomes remain solely with participating academies and clubs.
+                <p class="muted mt-3 small">We do not guarantee contracts, scholarships, or placements. We focus on making the evaluation environment more credible, organized, and commercially viable.</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / TELEGRAM -->
+  <section id="contact" class="fade-in">
+    <div class="container">
+      <div class="d-flex flex-column align-items-center text-center mb-4">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-sub">We are currently focused on academy partnerships and international showcase collaboration. Contact us directly via Telegram.</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <!-- Academy contact -->
+        <div class="col-md-6">
+          <div class="glass p-4 text-center h-100">
+            <h4 class="mb-2"><i class="fa-solid fa-handshake me-2"></i> Local Academy Partnerships</h4>
+            <p class="muted">For academies in Ethiopia and East Africa seeking structured international showcase access.</p>
+            <a href="https://t.me/Newlifeconsultancy" class="btn btn-primary mt-3" target="_blank" rel="noopener">
+              <i class="fa-brands fa-telegram me-2"></i> Message @Newlifeconsultancy
+            </a>
+          </div>
+        </div>
+        <!-- International partner contact -->
+        <div class="col-md-6">
+          <div class="glass p-4 text-center h-100">
+            <h4 class="mb-2"><i class="fa-solid fa-globe me-2"></i> International Partners</h4>
+            <p class="muted">For clubs, academies, scouts, and operators interested in East African showcase access.</p>
+            <a href="https://t.me/Newlifeconsultancy" class="btn btn-primary mt-3" target="_blank" rel="noopener">
+              <i class="fa-brands fa-telegram me-2"></i> Message @Newlifeconsultancy
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <p class="muted mb-0">Our Telegram handle: <strong>@Newlifeconsultancy</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container text-center">
+      <div class="mb-2">
+        <strong>NewLife Agency</strong> • Academy-to-Academy Showcase Operator
+      </div>
+      <div class="muted">
+        &copy; 2026 NewLife Agency. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll animation using IntersectionObserver
+    document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach(elem => {
+        observer.observe(elem);
+      });
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
